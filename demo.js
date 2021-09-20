@@ -47,14 +47,16 @@ function renderList(data) {
               <td>${data[i].phone}</td>
               <td>${data[i].email}</td>
               <td><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editModal">修改</button></td>
-              <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-num="deleteItem">刪除</button></td>
+              <td><button type="button" class="btn btn-danger deleteItem" data-num=${i}
+              data-action="deleteItem"
+              >刪除</button></td>
             </tr>`
   }
   tbodyWrap.innerHTML = list
 }
 
 // 欄位驗證
-;(function () {
+(function () {
   'use strict'
   var forms = document.querySelectorAll('.needs-validation')
   Array.prototype.slice.call(forms)
@@ -68,7 +70,8 @@ function renderList(data) {
       }, false)
     })
     $("#myForm input").val()
-})();
+})()
+
 
 // 重新填寫、取消
 ;(function() {
@@ -87,14 +90,23 @@ function renderList(data) {
   })
 })();
 
+
 // 刪除列表
+let deleteNum = -1
 ;(function() {
   const tbodyWrap = document.querySelector('.tbody-wrap')
   tbodyWrap.addEventListener('click', (e) => {
-    if(e.target.getAttribute('data-num') === 'deleteItem') {
-      let num = e.target.dataset.num
-      data.splice(num, 1)
+    if(e.target.getAttribute('data-action') === 'deleteItem') {
+      deleteNum = parseInt(e.target.dataset.num,10);
+      $('#deleteModal').modal('show')
     }
+  })
+})();
+
+;(function() {
+  const deleteModal = document.querySelector('.deleteModal')
+  deleteModal.addEventListener('click', (e) => {
+    data.splice(deleteNum, 1)
     renderList(data)
   })
 })();
