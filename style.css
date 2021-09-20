@@ -1,0 +1,85 @@
+body {
+  color: #000;
+  overflow-x: hidden !important;
+  -ms-overflow-style: none;
+  font-family: 'Roboto Mono', 'Noto Sans TC', sans-serif, serif;
+  background-color: #ffd366;
+}
+
+.container {
+  max-width: 1200px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin: 0 auto;
+}
+.text-center {
+  text-align: center;
+}
+.l-title {
+  margin-bottom: 32px;
+  padding-top: 56px;
+}
+.primary {
+  color: #ffd366;
+}
+.secondary {
+  color: #757575;
+}
+
+.btn-box {
+  margin-bottom: 16px;
+  text-align: right;
+}
+.btn-box button {
+  margin-right: 16px;
+}
+
+/* table */
+.table-wrap {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 32px 24px;
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.table-css {
+  margin: 0 auto;
+  border-collapse: collapse;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.tbody-wrap td {
+  padding: 28px 8px;
+}
+
+.tbody-wrap tr:nth-child(even) {
+  background-color: #EDEDED ;
+}
+.tbody-wrap tr:nth-child(odd) {
+  background-color: #F9F9F9;
+}
+
+@media (max-width: 767px) {
+  .table-css {
+    width: 700px;
+  }
+}
+
+/* modal */
+.modal-content {
+  padding: 24px;
+}
+.modal-content h4 {
+  margin-bottom: 16px;
+}
+
+/* form */
+.was-validated .form-control:valid {
+  border-color:#ced4da !important;
+  background-image: none !important;
+}
