@@ -1,42 +1,25 @@
-let data = [
-  {
-    "name": "邱小甘",
-    "englishName": "Peter",
-    "gender": "男",
-    "phone": "0918882734",
-    "email": "ass3@gmail.com"
-  },
-  {
-    "name": "蔡凡昕",
-    "englishName": "Allen",
-    "gender": "男",
-    "phone": "0918882334",
-    "email": "vcvv000@gmail.com"
-  },
-  {
-    "name": "趙雪瑜",
-    "englishName": "Sharon",
-    "gender": "女",
-    "phone": "0919664210",
-    "email": "Sharon123@gmail.com"
-  },
-  {
-    "name": "賴佳蓉",
-    "englishName": "Yoki",
-    "gender": "女",
-    "phone": "0988654888",
-    "email": "Yoki123@gmail.com"
-  }
-]
+// 取得 data
+let data = []
+function getData() {
+  const url = 'https://mocki.io/v1/ee43aff6-1a09-43db-8591-3d0b7721d6d7'
+  axios.get(url)
+    .then(res => {
+      data = res.data
+      renderList()
+    })
+    .catch(err => {
+      console.log(err);
+    })
+}
 
 // 初始化
 function init() {
-  renderList(data)
+  getData()
 }
 init()
 
 // 渲染列表
-function renderList(data) {
+function renderList() {
   const tbodyWrap = document.querySelector('.tbody-wrap')
   let list = '' 
   for(let i=0; i<data.length; i++) {
@@ -56,9 +39,9 @@ function renderList(data) {
 }
 
 // 欄位驗證
-(function () {
+;(function () {
   'use strict'
-  var forms = document.querySelectorAll('.needs-validation')
+  let forms = document.querySelectorAll('.needs-validation')
   Array.prototype.slice.call(forms)
     .forEach(function (form) {
       form.addEventListener('submit', function (event) {
@@ -70,7 +53,7 @@ function renderList(data) {
       }, false)
     })
     $("#myForm input").val()
-})()
+})();
 
 
 // 重新填寫、取消
@@ -107,6 +90,6 @@ let deleteNum = -1
   const deleteModal = document.querySelector('.deleteModal')
   deleteModal.addEventListener('click', (e) => {
     data.splice(deleteNum, 1)
-    renderList(data)
+    renderList()
   })
 })();
