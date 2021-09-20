@@ -88,13 +88,13 @@ function renderList(data) {
 })();
 
 // 刪除列表
-// ;(function() {
-//   const tbodyWrap = document.querySelector('.tbody-wrap')
-//   tbodyWrap.addEventListener('click', (e) => {
-//     if(e.target.getAttribute('data-num') === 'deleteItem') {
-//       let num = e.target.dataset.num
-//       data.splice(num, 1)
-//     }
-//     renderList(data)
-//   })
-// })();
+;(function() {
+  const tbodyWrap = document.querySelector('.tbody-wrap')
+  tbodyWrap.addEventListener('click', (e) => {
+    if(e.target.getAttribute('data-num') === 'deleteItem') {
+      let num = e.target.dataset.num
+      data.splice(num, 1)
+    }
+    renderList(data)
+  })
+})();
