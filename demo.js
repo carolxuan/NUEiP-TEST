@@ -1,22 +1,30 @@
+// 套件
+AOS.init()
+
+// loading
+const load = document.querySelector('.loading-icon')
+function loading(status) {
+  const loading = load.classList.toggle('d-none')
+  status === 'run' ? loading : loading
+}
+
 // 取得 data
 let data = []
 function getData() {
+  loading('run')
   const url = 'https://mocki.io/v1/ee43aff6-1a09-43db-8591-3d0b7721d6d7'
   axios.get(url)
     .then(res => {
       data = res.data
       renderList()
+      loading()
     })
     .catch(err => {
       console.log(err);
     })
 }
+getData()
 
-// 初始化
-function init() {
-  getData()
-}
-init()
 
 // 渲染列表
 function renderList() {
@@ -24,7 +32,10 @@ function renderList() {
   let list = '' 
   for(let i=0; i<data.length; i++) {
     list += `<tr>
-              <td>${data[i].name}</td>
+              <td>
+                <span data-bs-toggle="tooltip" class="tooltipTxt" data-bs-placement="top" 
+                title="${`[${data[i].gender}]`} ${data[i].name} ${data[i].englishName}">${data[i].name}</span>
+              </td>
               <td>${data[i].englishName}</td>
               <td>${data[i].gender}</td>
               <td>${data[i].phone}</td>
@@ -36,6 +47,10 @@ function renderList() {
             </tr>`
   }
   tbodyWrap.innerHTML = list
+  let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  let tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+  })
 }
 
 // 欄位驗證

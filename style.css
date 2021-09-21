@@ -6,6 +6,17 @@ body {
   background-color: #ffd366;
 }
 
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.d-none {
+  display: none;
+}
+
 .container {
   max-width: 1200px;
   padding-left: 16px;
@@ -15,23 +26,11 @@ body {
 .text-center {
   text-align: center;
 }
-.l-title {
-  margin-bottom: 32px;
-  padding-top: 56px;
-}
 .primary {
   color: #ffd366;
 }
 .secondary {
   color: #757575;
-}
-
-.btn-box {
-  margin-bottom: 16px;
-  text-align: right;
-}
-.btn-box button {
-  margin-right: 16px;
 }
 
 /* table */
@@ -55,6 +54,11 @@ body {
 
 .tbody-wrap td {
   padding: 28px 8px;
+  transition: all 0.1s;
+}
+
+.tbody-wrap tr:hover td { 
+  background:#ffd366;
 }
 
 .tbody-wrap tr:nth-child(even) {
@@ -82,4 +86,118 @@ body {
 .was-validated .form-control:valid {
   border-color:#ced4da !important;
   background-image: none !important;
+}
+
+/* btn */
+.btn-box {
+  margin-bottom: 16px;
+  text-align: right;
+}
+.btn-box button {
+  margin-right: 16px;
+}
+
+.l-btn {
+  background: #22577A;
+}
+
+.btn--primary {
+	position: relative;
+	display: table;
+	font-size: 18px;
+	padding: 12px 0;
+	margin: 0 auto;
+	text-align: center;
+	width: 100%;
+	max-width: 180px;
+	box-shadow: 7px 7px 10px 0px rgba(34,87,122,.65);
+	color: #fff;
+	border-radius: 10px;
+	z-index: 1;
+}
+.btn--primary:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  border-radius: 10px;
+  background: #0d6efd;
+  transition: all 0.3s ease;
+}
+.btn--primary:hover {
+  color: #fff;
+}
+.btn--primary:hover:after {
+  top: 0;
+  height: 100%;
+}
+.btn--primary:active {
+  top: 2px;
+}
+
+/* loading */
+.loading-icon .background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 9999;
+    background-color: black;
+    opacity: 0.6;
+}
+.loading-icon svg {
+  width: 200px;
+  height: 200px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99999;
+}
+
+/* typing */
+.title-css {
+  color: #fff;
+  background-color: rgba(0,0,0,.55);
+  padding: 10px;
+  border-radius: 10px;
+  width: 300px;
+  min-height: 90px;
+  max-height: 100%;
+  margin: 32px auto 24px auto;
+}
+.typing {
+  width: 5em;
+  white-space: nowrap;
+  border-right: 2px solid transparent;
+  animation: typing 3.5s steps(5, end), blink-caret 0.75s step-end infinite;
+  overflow: hidden;
+  letter-spacing: 0;
+  margin: 28px auto;
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 5em;
+  }
+}
+@keyframes blink-caret {
+  from,
+  to {
+    box-shadow: 2px 0 0 0 transparent;
+  }
+  50% {
+    box-shadow: 2px 0 0 0;
+  }
+}
+
+/* tooltipTxt */
+.tooltipTxt {
+  cursor: pointer;
 }
