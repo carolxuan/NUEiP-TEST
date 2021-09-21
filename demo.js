@@ -29,7 +29,6 @@ getData()
 function renderList() {
   const tbodyWrap = document.querySelector('.tbody-wrap')
   let list = ''
-  let number = ''
   for(let i=0; i<data.length; i++) {
     list += `<tr>
               <td>
