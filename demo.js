@@ -25,11 +25,11 @@ function getData() {
 }
 getData()
 
-
 // 渲染列表
 function renderList() {
   const tbodyWrap = document.querySelector('.tbody-wrap')
   let list = ''
+  let number = ''
   for(let i=0; i<data.length; i++) {
     list += `<tr>
               <td>
@@ -38,13 +38,13 @@ function renderList() {
               </td>
               <td>${data[i].englishName}</td>
               <td>${data[i].gender}</td>
-              <td><a href="#" data-bs-toggle="popover" data-bs-content="聯絡方式：${data[i].phone}">${data[i].phone}</a></td>
+              <td><a href="#" data-bs-toggle="popover" data-bs-content="聯絡方式：${data[i].phone.substring(0, 4) + "-" + data[i].phone.substring(4, 7) + "-" + data[i].phone.substring(7, 10)}">${data[i].phone}</a></td>
               <td>${data[i].email}</td>
               <td><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editModal">修改</button></td>
               <td><button type="button" class="btn btn-danger deleteItem" data-num=${i}
               data-action="deleteItem"
               >刪除</button></td>
-            </tr>`   
+            </tr>`
   }
   tbodyWrap.innerHTML = list
   let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -74,7 +74,6 @@ function renderList() {
     $("#myForm input").val()
 })();
 
-
 // 重新填寫、取消
 ;(function() {
   const btnArea = document.querySelectorAll('.groupBtn')
@@ -91,7 +90,6 @@ function renderList() {
     })
   })
 })();
-
 
 // 刪除列表
 let deleteNum = -1
