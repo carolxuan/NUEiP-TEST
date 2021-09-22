@@ -136,14 +136,14 @@ a {
 
 /* loading */
 .loading-icon .background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 9999;
-    background-color: black;
-    opacity: 0.6;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 9999;
+  background-color: black;
+  opacity: 0.6;
 }
 .loading-icon svg {
   width: 200px;
