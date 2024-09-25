@@ -12,10 +12,12 @@ function loading(status) {
 let data = []
 function getData() {
   loading('run')
-  const url = 'https://mocki.io/v1/ee43aff6-1a09-43db-8591-3d0b7721d6d7'
+  // const url = 'https://mocki.io/v1/ee43aff6-1a09-43db-8591-3d0b7721d6d7'
+  const url = 'https://randomuser.me/api/?results=10'
   axios.get(url)
     .then(res => {
-      data = res.data
+      data = res.data.results
+      console.log(data)
       renderList()
       loading()
     })
@@ -33,9 +35,8 @@ function renderList() {
     list += `<tr>
               <td>
                 <span data-bs-toggle="tooltip" class="tooltipTxt" data-bs-placement="top" 
-                title="${`[${data[i].gender}]`} ${data[i].name} ${data[i].englishName}">${data[i].name}</span>
+                title="${`[${data[i].gender}]`} ${data[i].name.first}">${data[i].name.first} ${data[i].name.last}</span>
               </td>
-              <td>${data[i].englishName}</td>
               <td>${data[i].gender}</td>
               <td><a href="#" data-bs-toggle="popover" data-bs-content="聯絡方式：${data[i].phone.substring(0, 4) + "-" + data[i].phone.substring(4, 7) + "-" + data[i].phone.substring(7, 10)}">${data[i].phone}</a></td>
               <td>${data[i].email}</td>
