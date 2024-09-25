@@ -1,5 +1,3 @@
-demo 網址：https://carolxuan.github.io/NUEiP-TEST/index.html
-
 ## 說明
 - 以黃色為主色
 - 主題為活潑風格
